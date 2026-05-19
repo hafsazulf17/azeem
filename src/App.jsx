@@ -1156,7 +1156,7 @@ const App = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="section skills" id="skills">
+      
 
       {/* Skills Section */}
       <section className="section skills" id="skills">
