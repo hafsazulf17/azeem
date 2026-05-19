@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import profileImg from './assets/dis.jpeg';
 
 const App = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -210,15 +211,23 @@ const App = () => {
         /* Hero Section */
         .hero {
           min-height: 100vh;
-          background: linear-gradient(135deg, #0c1e47 0%, #1a3a6e 40%, #2d5a87 70%, #1a3a6e 100%);
+          background: #0a1628;
           display: flex;
           align-items: center;
           justify-content: center;
-          text-align: center;
+          gap: 4rem;
           padding: 0 5%;
           position: relative;
           overflow: hidden;
         }
+
+        .hero-profile-image {
+          height: 100vh;
+          max-width: 40%;
+          object-fit: cover;
+          z-index: 1;
+        }
+
 
         .hero::before {
           content: '';
@@ -234,8 +243,14 @@ const App = () => {
         .hero-content {
           position: relative;
           z-index: 1;
-          max-width: 900px;
+          max-width: 800px;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: left;
         }
+
 
         .hero-badge {
           display: inline-block;
@@ -253,12 +268,13 @@ const App = () => {
         }
 
         .hero h1 {
-          font-size: 4.5rem;
+          font-size: 3.5rem;
           color: #fff;
           font-weight: 800;
           margin-bottom: 1rem;
           letter-spacing: 2px;
           animation: fadeInUp 0.8s ease 0.2s both;
+          text-align: left;
         }
 
         .hero-title {
@@ -267,6 +283,7 @@ const App = () => {
           font-weight: 600;
           margin-bottom: 1rem;
           animation: fadeInUp 0.8s ease 0.4s both;
+          text-align: left;
         }
 
         .hero-subtitle {
@@ -274,18 +291,18 @@ const App = () => {
           color: rgba(255, 255, 255, 0.85);
           margin-bottom: 2.5rem;
           max-width: 600px;
-          margin-left: auto;
-          margin-right: auto;
           animation: fadeInUp 0.8s ease 0.6s both;
+          text-align: left;
         }
 
         .hero-buttons {
           display: flex;
           gap: 1.5rem;
-          justify-content: center;
+          justify-content: flex-start;
           flex-wrap: wrap;
           animation: fadeInUp 0.8s ease 0.8s both;
         }
+
 
         .btn {
           padding: 1rem 2.5rem;
@@ -438,43 +455,75 @@ const App = () => {
           font-weight: 700;
         }
 
-        .about-text {
+        .about-text-hero {
           font-size: 1.1rem;
-          color: #555;
-          line-height: 1.9;
+          color: rgba(255, 255, 255, 0.85);
+          line-height: 1.8;
+          margin-bottom: 2rem;
           text-align: justify;
         }
 
-        .about-stats {
+        .hero-lists {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
-          margin-top: 3rem;
+          margin-bottom: 2rem;
         }
 
-        .stat-item {
-          background: #fff;
-          padding: 1.5rem;
-          border-radius: 15px;
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-          transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-          transform: translateY(-5px);
-        }
-
-        .stat-number {
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: #0c1e47;
+        .hero-list-group h4 {
+          color: #4a90d9;
+          font-size: 1rem;
           margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
         }
 
-        .stat-label {
-          color: #666;
+        .hero-list-group ul {
+          list-style: none;
+          color: rgba(255, 255, 255, 0.8);
           font-size: 0.9rem;
         }
+
+        .hero-list-group li {
+          margin-bottom: 0.4rem;
+          position: relative;
+          padding-left: 1.2rem;
+        }
+
+        .hero-list-group li::before {
+          content: '✓';
+          position: absolute;
+          left: 0;
+          color: #4a90d9;
+        }
+
+        .hero-about-stats {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1rem;
+          margin-top: 2rem;
+        }
+
+        .hero-stat-item {
+          background: rgba(255, 255, 255, 0.1);
+          padding: 1rem;
+          border-radius: 12px;
+          text-align: center;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stat-number {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #fff;
+          display: block;
+        }
+
+        .hero-stat-label {
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 0.8rem;
+        }
+
 
         /* Skills Section */
         .skills {
@@ -888,83 +937,109 @@ const App = () => {
 
         /* Responsive */
         @media (max-width: 1024px) {
+          .hero {
+            gap: 2rem;
+          }
+          .hero-profile-image {
+            width: 35%;
+          }
           .skills-grid {
             grid-template-columns: repeat(3, 1fr);
           }
-
           .projects-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
+
+
 
         @media (max-width: 768px) {
           .nav-links {
             display: none;
           }
-
           .hamburger {
             display: flex;
           }
-
+          .hero {
+            flex-direction: column-reverse;
+            text-align: center;
+            padding: 6rem 5% 2rem;
+            gap: 3rem;
+            min-height: auto;
+          }
+          .hero-profile-image {
+            height: auto;
+            width: 250px;
+            border-radius: 50%;
+            margin: 0 auto;
+          }
+          .hero-content {
+            text-align: center;
+            align-items: center;
+          }
           .hero h1 {
             font-size: 2.8rem;
+            text-align: center;
           }
-
           .hero-title {
             font-size: 1.4rem;
+            text-align: center;
           }
-
           .hero-subtitle {
             font-size: 1rem;
+            text-align: center;
+            margin: 0 auto 2.5rem;
           }
-
+          .hero-buttons {
+            justify-content: center;
+          }
+          .about-text-hero {
+            text-align: center;
+          }
+          .hero-lists {
+            grid-template-columns: 1fr;
+          }
+          .hero-about-stats {
+            grid-template-columns: repeat(2, 1fr);
+          }
           .section-title {
             font-size: 2rem;
           }
-
           .about-stats {
             grid-template-columns: repeat(2, 1fr);
           }
-
           .skills-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-
           .timeline::before {
             left: 20px;
           }
-
           .timeline-item {
             flex-direction: column !important;
             text-align: left !important;
             padding-left: 50px;
           }
-
           .timeline-content {
             width: 100%;
           }
-
           .timeline-dot {
             left: 20px;
           }
-
           .education-cards {
             grid-template-columns: 1fr;
           }
-
           .projects-grid {
             grid-template-columns: 1fr;
           }
-
           .contact-card {
             flex-direction: column;
             text-align: center;
           }
-
           .contact-card:hover {
             transform: translateY(-5px);
           }
         }
+
 
         @media (max-width: 480px) {
           .hero h1 {
@@ -989,6 +1064,11 @@ const App = () => {
             grid-template-columns: 1fr;
           }
         }
+      .hero-profile-image {
+          height: 100vh;
+          max-width: 40%;
+          object-fit: cover;
+        }
       `}</style>
 
       {/* Navigation */}
@@ -1011,6 +1091,7 @@ const App = () => {
 
       {/* Hero Section */}
       <section className="hero" id="home">
+        <img src={profileImg} alt="Profile" className="hero-profile-image" />
         <div className="hero-content">
           <span className="hero-badge">Structural Engineering Expert</span>
           <h1>Muhammad Azeem</h1>
@@ -1022,6 +1103,50 @@ const App = () => {
             <a href="#projects" className="btn btn-primary">View Projects</a>
             <a href="#contact" className="btn btn-secondary">Contact Me</a>
           </div>
+
+          <p className="about-text-hero">
+            Structural Engineer with Australian Permanent Residency (Subclass 190) and full working rights in Australia, bringing 12+ years of experience in structural analysis, design, assessment, and retrofitting of buildings and infrastructure projects. Currently serving as Senior Design Engineer at NESPAK.
+          </p>
+
+          <div className="hero-lists">
+            <div className="hero-list-group">
+              <h4>Expertise</h4>
+              <ul>
+                <li>Structural design, analysis, detailing and project coordination</li>
+                <li>Design of multistory RCC buildings, prestressed concrete bridges, culverts and RC walls</li>
+                <li>Structural assessment, forensic analysis and seismic retrofitting</li>
+                <li>Advanced finite element modelling and performance-based structural analysis</li>
+                <li>Preparation of structural calculations, BOQs and quantity/cost estimation</li>
+                <li>BIM coordination and drafting workflows</li>
+              </ul>
+            </div>
+            <div className="hero-list-group">
+              <h4>Standards & Software</h4>
+              <ul>
+                <li>AS 3600, AS 4100, AS 1170, AS 3826, ACI 318, ASCE 7-16, AISC 360, AASHTO</li>
+                <li>ETABS, SAP2000, SAFE, CSiBridge, AutoCAD, REVIT, STAAD Pro, RISA-3D, Tekla, SPACEGASS, IDEA StatiCa, RAM Connection, MS Project, Primavera</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="hero-about-stats">
+            <div className="hero-stat-item">
+              <span className="hero-stat-number">14+</span>
+              <span className="hero-stat-label">Years Experience</span>
+            </div>
+            <div className="hero-stat-item">
+              <span className="hero-stat-number">50+</span>
+              <span className="hero-stat-label">Projects Completed</span>
+            </div>
+            <div className="hero-stat-item">
+              <span className="hero-stat-number">3</span>
+              <span className="hero-stat-label">Research Papers</span>
+            </div>
+            <div className="hero-stat-item">
+              <span className="hero-stat-number">2</span>
+              <span className="hero-stat-label">Companies Founded</span>
+            </div>
+          </div>
         </div>
         <div className="scroll-indicator">
           <svg viewBox="0 0 24 24">
@@ -1030,40 +1155,8 @@ const App = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="section about" id="about">
-        <div className="section-header">
-          <span className="section-tag">Get To Know</span>
-          <h2 className="section-title">About Me</h2>
-          <div className="section-line"></div>
-        </div>
-        <div className="about-content">
-          <div className="about-image">
-            <span>MA</span>
-          </div>
-          <p className="about-text">
-            As a highly skilled Structural Engineer with diverse experience, I have expertise in structural analysis and design of high-rise buildings, bridges, culverts, and retrofitting of RCC structures. I have successfully supervised design projects and worked with advanced structural design, detailing, and drawing software. My academic achievements include a Bachelor's degree awarded with gold medal and Master's in Structural Engineering from NUST, as well as a Professional Engineer License from Pakistan Engineering Council (PEC). I have also published an earthquake engineering research paper in an international conference. Currently, I am a Senior Design Engineer at NESPAK. Additionally, I am the founder of GRS Contractors and Pakmaterials.
-          </p>
-          <div className="about-stats">
-            <div className="stat-item">
-              <div className="stat-number">14+</div>
-              <div className="stat-label">Years Experience</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">50+</div>
-              <div className="stat-label">Projects Completed</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">3</div>
-              <div className="stat-label">Research Papers</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">2</div>
-              <div className="stat-label">Companies Founded</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Skills Section */}
+      <section className="section skills" id="skills">
 
       {/* Skills Section */}
       <section className="section skills" id="skills">
