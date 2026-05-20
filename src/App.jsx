@@ -1093,7 +1093,7 @@ const App = () => {
       <section className="hero" id="home">
         <img src={profileImg} alt="Profile" className="hero-profile-image" />
         <div className="hero-content">
-          <span className="hero-badge">Structural Engineering Expert</span>
+          
           <h1>Muhammad Azeem</h1>
           <p className="hero-title">Senior Structural Engineer</p>
           <p className="hero-subtitle">
